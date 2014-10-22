@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+}
+
+.remark-slide-number {
+  display: none;
+}
+
+.remark-inline-code {
+  background: #f8f8f8;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  font-family: 'Input Mono', Consolas, monospace;
+}
+.hljs.remark-code {
+  font-family: 'Input Mono', Consolas, monospace;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.remark-code-line {
+  line-height: 1.5;
+}
+
+.smaller .remark-code {
+  font-size: 0.8em;
+}
+
+a {
+  color: #000;
+}
+
+/* Slide styling */
+.remark-slide-content {
+  padding: 1em;
+}
+.inverse {
+  background: #000;
+  color: #eee;
+  text-shadow: 0 0 20px #444;
+}
+
+.left-column, .right-column {
+  width: 47%;
+  float: left;
+}
+
+.left-column {
+  margin-right: 20px;
+}

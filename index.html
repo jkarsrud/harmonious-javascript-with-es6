@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Harmonious JavaScript with ES6</title>
+    <link rel="stylesheet" href="presentation.css">
+  </head>
+  <body>
+    <textarea id="source">
+name: intro
+layout: true
+class: center, middle, inverse
+---
+# Harmonious JavaScript with ES6*
+.footnote[.red[*] EcmaScript 6, aka. JavaScript Next, aka. Harmony]
+---
+layout: false
+name: myself
+
+# about:me
+
+## Jesper Haug Karsrud
+
+**Full stack developer**
+
+**Knowit Reaktor Kyber**
+
+**Umbraco** - Open source .NET CMS
+
+**I &lt;3 JavaScript**
+---
+layout: false
+class: cf
+
+# What's in ES6?
+.left-column[
+- [arrows](https://github.com/lukehoban/es6features#arrows)
+- [classes](https://github.com/lukehoban/es6features#classes)
+- [enhanced object literals](https://github.com/lukehoban/es6features#enhanced-object-literals)
+- [template strings](https://github.com/lukehoban/es6features#template-strings)
+- [destructuring](https://github.com/lukehoban/es6features#destructuring)
+- [default + rest + spread](https://github.com/lukehoban/es6features#default--rest--spread)
+- [let + const](https://github.com/lukehoban/es6features#let--const)
+- [iterators + for..of](https://github.com/lukehoban/es6features#iterators--forof)
+- [generators](https://github.com/lukehoban/es6features#generators)
+- [comprehensions](https://github.com/lukehoban/es6features#comprehensions)
+- [unicode](https://github.com/lukehoban/es6features#unicode)
+- [modules](https://github.com/lukehoban/es6features#modules)
+]
+.right-column[
+- [module loaders](https://github.com/lukehoban/es6features#module-loaders)
+- [map + set + weakmap + weakset](https://github.com/lukehoban/es6features#map--set--weakmap--weakset)
+- [proxies](https://github.com/lukehoban/es6features#proxies)
+- [symbols](https://github.com/lukehoban/es6features#symbols)
+- [subclassable built-ins](https://github.com/lukehoban/es6features#subclassable-built-ins)
+- [promises](https://github.com/lukehoban/es6features#promises)
+- [math + number + string + object APIs](https://github.com/lukehoban/es6features#math--number--string--object-apis)
+- [binary and octal literals](https://github.com/lukehoban/es6features#binary-and-octal-literals)
+- [reflect api](https://github.com/lukehoban/es6features#reflect-api)
+- [tail calls](https://github.com/lukehoban/es6features#tail-calls)
+]
+
+---
+#Arrows
+
+## Expressions
+
+.left-column[
+#### Pre-ES6
+```js
+var mapped = arr.map(function(x) {
+  return x + 1;
+});
+var mapped2 = arr.map(function(x, i) {
+  return x + i;
+});
+```
+]
+
+.right-column[
+#### ES6
+```js
+var mapped = arr.map(x => x + 1);
+var mapped2 = arr.map((x, i) => x + i);
+```
+]
+
+???
+- Similar syntax to what we find in C# lamdas. Also in Java8 and CoffeeScript
+- `this` shares the lexical scope of surrounding code
+
+---
+#Arrows
+
+## Statement bodies
+.left-column[
+#### Pre-ES6
+```js
+arr.forEach(function(x) {
+  if(x % 3 === 0)
+    threes.push(x)
+});
+```
+]
+
+.right-column[
+#### ES6
+```js
+arr.forEach(x => {
+  if(x % 3 === 0)
+    threes.push(x)
+});
+```
+]
+???
+Not much difference, but it's there ;)
+
+---
+#Arrows
+
+## Lexical `this`
+.left-column.smaller[
+#### Pre-ES6
+```js
+var conference = {
+  _name: "KDS 2014",
+  _attendees: [],
+  printAttendees: function() {
+    var that = this;
+    this._attendees.forEach(function(a) {
+      console.log(a + ' is attending ' that._name);
+    });
+  }
+};
+```
+]
+
+.right-column.smaller[
+#### ES6
+```js
+var conference = {
+  _name: "KDS 2014",
+  _attendees: [],
+  printAttendees() {
+    this._attendees.forEach(a =>
+      console.log(a + ' is attending ' this._name));
+  }
+};
+```
+]
+    </textarea>
+    <script src="js/remark-latest.min.js"></script>
+    <script>
+      var hljs = remark.highlighter.js;
+      var slides = remark.create({
+        ratio: '16:9',
+        highlightStyle: 'github'
+      });
+    </script>
+  </body>
+</html>
