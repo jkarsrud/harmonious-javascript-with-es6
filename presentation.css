@@ -2,11 +2,23 @@
   box-sizing: border-box;
 }
 body {
-  font-family: Helvetica Neue, Helvetica, sans-serif;
+  font-family: 'Helvetica Neue', Consolas, sans-serif;
 }
 
 .remark-slide-number {
   display: none;
+}
+
+.remark-slide-content h1 {
+  font-size: 40px;
+}
+
+.remark-slide-content h2 {
+  font-size: 32px;
+}
+.remark-slide-content h1,
+.remark-slide-content h2 {
+  margin: .1em 0;
 }
 
 .remark-inline-code {
@@ -30,12 +42,18 @@ body {
 .smaller .remark-code {
   font-size: 0.8em;
 }
+.smallest .remark-code {
+  font-size: 0.6em;
+}
 
 a {
   color: #000;
 }
 
 /* Slide styling */
+.image img {
+width: 300px;
+}
 .remark-slide-content {
   padding: 1em;
 }

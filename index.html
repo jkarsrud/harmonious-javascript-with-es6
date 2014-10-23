@@ -25,14 +25,18 @@ name: myself
 
 **Knowit Reaktor Kyber**
 
-**Umbraco** - Open source .NET CMS
+**I love JavaScript**
 
-**I &lt;3 JavaScript**
+--
+
+.image[![Umbraco CMS](images/umbracologo.png)]
+
 ---
 layout: false
+name: new
 class: cf
 
-# What's in ES6?
+# ES6 goodies for everyone!
 .left-column[
 - [arrows](https://github.com/lukehoban/es6features#arrows)
 - [classes](https://github.com/lukehoban/es6features#classes)
@@ -60,7 +64,16 @@ class: cf
 - [tail calls](https://github.com/lukehoban/es6features#tail-calls)
 ]
 
+???
+This is all of the new stuff that's in ES6
+
+I'll go through some of the — IMO — nicest/most useful ones
+
+** There are other hidden features in my slides too, so pay attention **
+
 ---
+name: arrows
+
 #Arrows
 
 ## Expressions
@@ -148,6 +161,233 @@ var conference = {
 };
 ```
 ]
+
+---
+name: classes
+
+#Classes
+
+```js
+class Car {
+  constructor(make) {
+    this.make = make;
+    this.currentSpeed = 30;
+  }
+
+  printCurrentSpeed() {
+    console.log(this.make +
+      ' is going ' + this.currentSpeed +
+      'km/h');
+  }
+
+  static revEngine() {
+    console.log('Vrooom!');
+  }
+}
+```
+
+???
+
+* Sugar on top of the prototype-based OO that we have today
+* Constructors and static methods
+
+**NEXT SLIDE**
+
+---
+
+#Classes
+
+```js
+class RaceCar extends Car {
+  constructor(make, topSpeed) {
+    super(make); // call base class constructor
+    this.topSpeed = topSpeed;
+  }
+
+  goFullSpeed() {
+    this.currentSpeed = this.topSpeed;
+  }
+}
+```
+
+???
+
+* nice inheritance syntax without the prototype assignment of today
+* Also gives us nice syntax for calling the base/super class (super)
+
+**NEXT SLIDE**
+
+---
+
+#Classes
+
+```js
+let bugatti = new RaceCar('Bugatti Veyron', 430);
+
+Car.revEngine();
+// Vrooom
+
+bugatti.printCurrentSpeed();
+// Bugatti Veyron is going 30 km/h
+
+bugatti.goFullSpeed();
+bugatti.printCurrentSpeed();
+// Bugatti Veyron is going 430 km/h
+```
+
+---
+name: modules
+
+#Modules
+
+.left-column.smallest[
+CommonJS/Node
+
+```js
+var path = require('path');
+var fs = require('fs');
+
+
+module.exports = mkdirP.mkdirp = mkdirP.mkdirP = mkdirP;
+
+function mkdirP (p, opts, f, made) {
+  // ...
+  p = path.resolve(p);
+  // ...
+  mkdirP(path.dirname(p), opts, function (er, made) {
+    // ...
+  })
+  // ...
+}
+
+// ...
+
+mkdirP.sync = function sync (p, opts, made) {
+  // ...
+  p = path.resolve(p);
+  // ...
+  made = sync(path.dirname(p), opts, made);
+  // ...
+}
+```
+]
+
+.right-column.smallest[
+ES6 Module
+
+```js
+import { resolve, dirname } from "path";
+import * as fs from "fs";
+
+/* aliases present in the original */
+export { mkdirP as mkdirp, mkdirP };
+
+export default function mkdirP (p, opts, f, made) {
+  // ...
+  p = resolve(p);
+  // ...
+  mkdirP(dirname(p), opts, function (er, made) {
+    // ...
+  })
+  // ...
+}
+
+// ...
+
+export function sync (p, opts, made) {
+  // ...
+  p = resolve(p);
+  // ...
+  made = sync(dirname(p), opts, made);
+  // ...
+}
+```
+]
+
+???
+* Finally a standardized module definition!
+* CommonJS/node.js inspired syntax
+* Named exports/imports
+  - If you've worked with Node.js you know how this works*
+* Default exports (like module.exports in node)
+
+---
+name: promises
+
+#Promises
+
+```js
+function timeout(duration = 0) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, duration);
+    })
+}
+
+var p = timeout(1000).then(() => {
+    return timeout(2000);
+}).then(() => {
+    throw new Error("hmm");
+}).catch(err => {
+    return Promise.all([timeout(100), timeout(200)]);
+})
+```
+
+???
+* Async pattern - like async await in C#
+* A promise that a value will be there some time in the future
+* Accomplishes the same thing as callbacks, but without callback hell
+* Improved readability through method chaining and proper error handling*
+
+---
+
+#Promises
+
+```js
+var promises = [2, 3, 5, 7, 11, 13].map(id => {
+  return getJSON("/post/" + id + ".json");
+});
+
+Promise.all(promises).then(posts => {
+  // posts contains an array of results for the given promises
+  view.render(posts);
+}).catch(reason => {
+  // if any of the promises fails.
+  throw new Error(reason);
+});
+```
+
+???
+As seen in the previous slide, you can also wait for all arrays to resolve before continuing
+
+---
+name: blockscope
+
+# Block scoping
+
+`let` is the new `var`
+
+`const` are real constants
+
+```js
+function f() {
+  {
+    let x;
+    {
+      // okay, block scoped name
+      const x = "sneaky";
+      // error, const
+      x = "foo";
+    }
+    // error, already declared in block
+    let x = "inner";
+  }
+}
+```
+???
+* JavaScript scoping is hard, mostly because of:
+  - global vs function scope
+* We now have the let keyword to help us
+* We also have proper constants through `const`
     </textarea>
     <script src="js/remark-latest.min.js"></script>
     <script>
