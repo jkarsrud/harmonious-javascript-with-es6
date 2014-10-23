@@ -63,6 +63,15 @@ width: 300px;
   text-shadow: 0 0 20px #444;
 }
 
+.inverse.remark-slide-content h1 {
+  font-size: 60px;
+}
+.awesome.remark-slide-content h1 {
+  font-size: 90px;
+  color: red;
+  text-shadow: 5px 5px 0 #ffd217, 10px 10px 0 #5ac7ff, 15px 15px 0 #ffd217, 20px 20px 0 #5ac7ff;
+}
+
 .left-column, .right-column {
   width: 47%;
   float: left;
