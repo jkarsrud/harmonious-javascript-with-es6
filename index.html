@@ -80,6 +80,11 @@ I'll go through some of the — IMO — nicest/most useful ones
 
 ---
 name: arrows
+class: center, middle
+
+#Arrows
+
+---
 
 #Arrows
 
@@ -171,6 +176,11 @@ var conference = {
 
 ---
 name: classes
+class: center, middle
+
+#Classes
+
+---
 
 #Classes
 
@@ -244,6 +254,18 @@ bugatti.printCurrentSpeed();
 
 ---
 name: modules
+class: center, middle
+
+#Modules
+
+???
+* Finally a standardized module definition!
+* CommonJS/node.js inspired syntax
+* Named exports/imports
+  - If you've worked with Node.js you know how this works*
+* Default exports (like module.exports in node)
+
+---
 
 #Modules
 
@@ -320,6 +342,16 @@ export function sync (p, opts, made) {
 
 ---
 name: promises
+class: center, middle
+
+#Promises
+
+???
+* Async pattern - like async await in C#
+* A promise that a value will be there some time in the future
+* Accomplishes the same thing as callbacks, but without callback hell
+* Improved readability through method chaining and proper error handling*
+---
 
 #Promises
 
@@ -368,6 +400,16 @@ As seen in the previous slide, you can also wait for all arrays to resolve befor
 
 ---
 name: blockscope
+class: center, middle
+
+#Block scoping
+
+???
+* JavaScript scoping is hard, mostly because of:
+  - global vs function scope
+* We now have the `let` keyword to help us
+* We also have proper constants through `const`
+---
 
 #Block scoping
 
@@ -390,6 +432,12 @@ function f() {
   }
 }
 ```
+
+???
+* JavaScript scoping is hard, mostly because of:
+  - global vs function scope
+* We now have the `let` keyword to help us
+* We also have proper constants through `const`
 ---
 #Block scoping
 
@@ -407,7 +455,7 @@ console.log('Is i defined here?: ' + (typeof i !== 'undefined')); //Is i defined
 ???
 * JavaScript scoping is hard, mostly because of:
   - global vs function scope
-* We now have the let keyword to help us
+* We now have the `let` keyword to help us
 * We also have proper constants through `const`
 
 ---
