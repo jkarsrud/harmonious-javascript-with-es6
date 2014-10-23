@@ -19,14 +19,21 @@ name: myself
 
 # about:me
 
-## Jesper Haug Karsrud
+.left-column[
+**Jesper Haug Karsrud**
 
 **Full stack developer**
 
 **Knowit Reaktor Kyber**
 
 **I love JavaScript**
+]
 
+.right-column[
+@beyondsanity
+
+github.com/jkarsrud
+]
 --
 
 .image[![Umbraco CMS](images/umbracologo.png)]
@@ -362,7 +369,7 @@ As seen in the previous slide, you can also wait for all arrays to resolve befor
 ---
 name: blockscope
 
-# Block scoping
+#Block scoping
 
 `let` is the new `var`
 
@@ -383,19 +390,104 @@ function f() {
   }
 }
 ```
+---
+#Block scoping
+
+```js
+var num = 0; //globally scoped
+
+for (let i = 0; i < 10; i++) { //i is block scoped
+  num += i;
+  console.log('value of i in block: ' + i);
+}
+
+console.log('Is i defined here?: ' + (typeof i !== 'undefined')); //Is i defined here?: false
+```
+
 ???
 * JavaScript scoping is hard, mostly because of:
   - global vs function scope
 * We now have the let keyword to help us
-* We also have proper constants through `const`*
+* We also have proper constants through `const`
 
 ---
 name: awesome
 class: awesome, center, middle, inverse
 
-# AWESOME!
+# AWESOME
 
-## When can I use it?
+## And you can use it right now
+
+---
+class: center, middle
+# How?
+
+By transpiling your code, of course!
+
+---
+class: center, middle
+
+# Traceur
+<img src="images/traceur.svg" alt="Traceur logo" width="200px">
+
+???
+#Traceur compiler:
+
+Traceur is a JavaScript.next-to-JavaScript-of-today compiler that allows you to use features from the future today
+
+* CLI for transpiling
+* Also has tasks for Grunt and Gulp
+---
+class: esnext, center, middle
+
+# esnext
+
+Tomorrow’s JavaScript syntax today
+
+???
+# ESNext
+
+## What is it?
+
+* Allow using future JavaScript syntax today.
+* Require as little runtime code as possible.
+* Generate human-readable code.*
+
+##What it's not?
+
+* Provide polyfills for future JavaScript APIs.
+* Line-by-line equivalence from source to compiled.
+
+Highly recommend the esnext repo
+---
+# esnext
+
+* Arrows: [es6-arrow-function](https://github.com/esnext/es6-arrow-function)
+* Classes: [es6-class](https://github.com/esnext/es6-class)
+* Block scoping: —
+* Modules: [es6-module-transpiler](https://github.com/esnext/es6-module-transpiler)
+* Promises: Nope, no polyfills
+
+???
+* Arrows: es6-arrow-function
+* Classes: es6-class
+* Block scoping: In the TODO-list
+* Modules: es6-module-transpiler
+  - Using it every day on Altibox - transpiling to AMD with custom loader
+  - Ember.JS is using them internally in the library
+  - Module code is future-proof, when it's implemented in your browsers, you remove the build step
+* Promises:
+  - Browser support is getting there, latest Chrome and Firefox has native support for Promises already
+  - Loads of libraries to give you support for it already, RSVP.js is one of the best.
+    - Adds a couple of nice things on top the spec too
+
+---
+# Credits and links
+
+- Luke Hoban for http://git.io/es6features
+- Square for https://github.com/esnext/esnext
+- The spec - https://people.mozilla.org/~jorendorff/es6-draft.html
+- RSVP.js - https://github.com/tildeio/rsvp.js
     </textarea>
     <script src="js/remark-latest.min.js"></script>
     <script>

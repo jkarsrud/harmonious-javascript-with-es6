@@ -1,3 +1,5 @@
+@import url(//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
+
 * {
   box-sizing: border-box;
 }
@@ -54,9 +56,11 @@ a {
 .image img {
 width: 300px;
 }
+
 .remark-slide-content {
   padding: 1em;
 }
+
 .inverse {
   background: #000;
   color: #eee;
@@ -70,6 +74,18 @@ width: 300px;
   font-size: 90px;
   color: red;
   text-shadow: 5px 5px 0 #ffd217, 10px 10px 0 #5ac7ff, 15px 15px 0 #ffd217, 20px 20px 0 #5ac7ff;
+}
+
+.esnext {
+  font-family: "Yanone Kaffeesatz";
+}
+
+.esnext h1 {
+  font-size: 90px;
+}
+
+.esnext p {
+  font-size: 32px;
 }
 
 .left-column, .right-column {
